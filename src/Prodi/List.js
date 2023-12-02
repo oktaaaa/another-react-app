@@ -19,6 +19,7 @@ const ProdiList = () =>{
     return(
         <>
             <h2>Halama List Prodi</h2>
+            
             <table className="table table-striped">
                 <thead>
                     <tr>

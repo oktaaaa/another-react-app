@@ -1,9 +1,10 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const List = () =>{
     const [fakultas, setFakultas] = useState([])
-
+    const navigate = useNavigate()
     useEffect(() => {
         Axios.get("https://apimi5a.vercel.app/fakultas")
         .then((res) => {
@@ -18,7 +19,9 @@ const List = () =>{
 
     return(
         <>
-            <h2>Halama List Fakultas</h2>
+            <h2>Halaman List Fakultas</h2>
+
+            <button className="btn btn-primary" onClick={() => navigate('/fakultas/create')}> +Tambah</button>
             <table className="table table-striped">
                 <thead>
                     <tr>

@@ -1,14 +1,14 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const List = () =>{
-    const [fakultas, setFakultas] = useState([])
+const ProdiList = () =>{
+    const [prodi, setProdi] = useState([])
 
     useEffect(() => {
-        Axios.get("https://apimi5a.vercel.app/fakultas")
+        Axios.get("https://apimi5a.vercel.app/prodi")
         .then((res) => {
             const {data} = res
-            setFakultas(data)
+            setProdi(data)
             // console.log(res);
         })
         .catch((error) => {
@@ -18,10 +18,11 @@ const List = () =>{
 
     return(
         <>
-            <h2>Halama List Fakultas</h2>
+            <h2>Halama List Prodi</h2>
             <table className="table table-striped">
                 <thead>
                     <tr>
+                        <th>Nama Prodi</th>
                         <th>Nama Fakultas</th>
                     </tr>
                     
@@ -30,12 +31,12 @@ const List = () =>{
                 
                
                <tbody>
-                {fakultas && fakultas.map(
-                    (fakultas, index) => {
+                {prodi && prodi.map(
+                    (prodi, index) => {
                         return (
                             <tr>
-                                <td>{fakultas.nama}</td>
-                                <td>{fakultas.prodi}</td>
+                                <td>{prodi.nama}</td>
+                                <td>{prodi.fakultas.nama}</td>
                             </tr>
                         )
                     }
@@ -46,4 +47,4 @@ const List = () =>{
     )
 }
 
-export default List
+export default ProdiList

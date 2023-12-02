@@ -24,6 +24,13 @@ function App() {
             </NavLink>
           </li>
 
+          <li className='nav-item'>
+            <NavLink to = '/prodi'
+            className='nav-link'>
+              Prodi
+            </NavLink>
+          </li>
+
           
         </ul>
         {/* Main content */}

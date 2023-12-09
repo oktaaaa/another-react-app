@@ -9,7 +9,7 @@ const FakultasUpdate = React.lazy(() => import('./Fakultas/Update'))
 
 // prodi
 const ProdiList = React.lazy(() => import('./Prodi/List'))
-
+const ProdiCreate = React.lazy(() => import('./Prodi/Create'))
 
 const routes = [
     {path: '/', Component: Home},
@@ -20,5 +20,6 @@ const routes = [
     {path: '/fakultas/update/:fakultasId', Component: FakultasUpdate},
 
     {path: '/prodi', Component: ProdiList},
+    {path: '/prodi/create', Component: ProdiCreate},
 ]
 export default routes

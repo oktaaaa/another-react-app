@@ -15,7 +15,7 @@ const Update = () =>{
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await Axios.put(`https://apimi5a.vercel.app/fakultas/${fakultasId}`)
+            await Axios.put(`https://apimi5a.vercel.app/fakultas/${fakultasId}`, fakultas)
                 .then((res) => {
                     navigate("/fakultas")
                 })
@@ -49,7 +49,7 @@ const Update = () =>{
             <form>
                 <input type="text" value={fakultas.nama} onChange={(e) => handleChange(e, "nama")}
                 className="form-control" placeholder="Input Nama Fakultas"/>
-                <button className="btn btn-primary">Simpan</button>
+                <button className="btn btn-primary" onClick={handleSubmit}>Simpan</button>
                 <button className="btn btn-light" onClick={() => navigate("/fakultas")}>Kembali</button>
             </form>
         </>

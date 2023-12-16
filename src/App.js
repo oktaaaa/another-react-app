@@ -17,6 +17,23 @@ function App() {
       return props.children
     }
   }
+
+  const AdminRoute = (props) => {
+    if(Cookies.get('role') !== 'admin'){
+      return <Navigate to = {'/'}/>
+    } else{
+      return props.children
+    }
+  }
+
+  const UserRoute = (props) => {
+    if(Cookies.get('role') !== 'user'){
+      return <Navigate to = {'/'}/>
+    } else{
+      return props.children
+    }
+  }
+
   return (
     <Suspense fallback = {<div>Loading...</div>}>
       <div className='App'>
@@ -72,8 +89,16 @@ function App() {
                 <Route path = '/login' element = {<AuthLogin/>} />
 
                 {routes.map((route, i) =>{
-                  const {path, Component} = route
-                  return <Route key = {i} path= {path} element= {<LoginRoute> <Component/></LoginRoute>}/>
+                  const {path, Component,role} = route
+
+                  if(role === 'admin'){
+                    return <Route key = {i} path= {path} element= {<LoginRoute> <AdminRoute><Component/></AdminRoute></LoginRoute>}/>
+                  } else if(role === 'admin'){
+                    return <Route key = {i} path= {path} element= {<LoginRoute> <UserRoute><Component/></UserRoute></LoginRoute>}/>
+                  } else if(role === 'all'){
+                    return <Route key = {i} path= {path} element= {<LoginRoute> <Component/></LoginRoute>}/>
+                  }
+                  
                 })}
               </Routes>
             </div>

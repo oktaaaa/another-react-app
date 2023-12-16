@@ -1,4 +1,5 @@
 import Axios from "axios";
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { NavLink , useNavigate } from "react-router-dom";
 
@@ -16,7 +17,9 @@ const ProdiList = () =>{
         }
     }
     useEffect(() => {
-        Axios.get("https://apimi5a.vercel.app/prodi")
+        Axios.get("https://apimi5a.vercel.app/prodi", {
+            headers: {"Authorization": Cookies.get('token')}
+        })
         .then((res) => {
             const {data} = res
             setProdi(data)
